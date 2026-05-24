@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jai Mehrotra | Data Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0f172a; --surface: #1e293b; --card: #334155;
+            --accent: #38bdf8; --accent2: #818cf8; --text: #e2e8f0; --muted: #94a3b8;
+            --gradient: linear-gradient(135deg, #38bdf8, #818cf8);
+        }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--accent2); }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            background: radial-gradient(ellipse at 50% 0%, rgba(56,189,248,0.12) 0%, transparent 60%);
+            text-align: center; padding: 2rem;
+        }
+        .hero h1 { font-size: 3.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .hero h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p.tagline { font-size: 1.25rem; color: var(--muted); margin-bottom: 1.5rem; max-width: 640px; }
+        .hero-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .hero-links a {
+            padding: 0.6rem 1.4rem; border-radius: 8px; font-weight: 500; font-size: 0.95rem;
+            border: 1px solid var(--accent); transition: all 0.2s;
+        }
+        .hero-links a:hover { background: var(--accent); color: var(--bg); }
+        .hero-links a.filled { background: var(--accent); color: var(--bg); }
+        .hero-links a.filled:hover { background: var(--accent2); border-color: var(--accent2); }
+
+        /* Sections */
+        section { max-width: 960px; margin: 0 auto; padding: 4rem 1.5rem; }
+        .section-title {
+            font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem;
+            border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 0.3rem;
+        }
+
+        /* Skills */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .skill-card {
+            background: var(--surface); border-radius: 12px; padding: 1.5rem;
+            border: 1px solid transparent; transition: border-color 0.3s;
+        }
+        .skill-card:hover { border-color: var(--accent); }
+        .skill-card h3 { color: var(--accent); margin-bottom: 0.8rem; font-size: 1.05rem; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .skill-tags span {
+            background: var(--card); padding: 0.3rem 0.7rem; border-radius: 6px;
+            font-size: 0.82rem; color: var(--muted);
+        }
+
+        /* Experience */
+        .timeline { position: relative; padding-left: 2rem; }
+        .timeline::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+            width: 2px; background: var(--card);
+        }
+        .timeline-item { position: relative; margin-bottom: 2.5rem; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -2rem; top: 0.5rem;
+            width: 12px; height: 12px; border-radius: 50%; background: var(--accent);
+            border: 2px solid var(--bg); transform: translateX(-5px);
+        }
+        .timeline-item h3 { font-size: 1.1rem; margin-bottom: 0.2rem; }
+        .timeline-item .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.6rem; }
+        .timeline-item ul { list-style: none; }
+        .timeline-item li { position: relative; padding-left: 1.2rem; margin-bottom: 0.4rem; font-size: 0.92rem; color: var(--muted); }
+        .timeline-item li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); }
+
+        /* Projects */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .project-card {
+            background: var(--surface); border-radius: 12px; padding: 1.5rem;
+            border: 1px solid transparent; transition: all 0.3s;
+        }
+        .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .project-card h3 { margin-bottom: 0.4rem; font-size: 1.05rem; }
+        .project-card .tech { color: var(--accent); font-size: 0.82rem; margin-bottom: 0.6rem; }
+        .project-card p { font-size: 0.9rem; color: var(--muted); }
+        .ai-badge {
+            display: inline-block; background: linear-gradient(135deg, #818cf8, #c084fc);
+            color: #fff; font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 4px;
+            margin-left: 0.5rem; vertical-align: middle; font-weight: 600;
+        }
+
+        /* Certifications */
+        .cert-list { display: flex; flex-direction: column; gap: 0.8rem; }
+        .cert-item {
+            background: var(--surface); padding: 1rem 1.5rem; border-radius: 10px;
+            display: flex; align-items: center; gap: 1rem;
+        }
+        .cert-item .icon { font-size: 1.5rem; }
+        .cert-item a { font-weight: 500; }
+        .cert-item span { color: var(--muted); font-size: 0.85rem; }
+
+        /* Footer */
+        footer {
+            text-align: center; padding: 2rem; color: var(--muted); font-size: 0.85rem;
+            border-top: 1px solid var(--card);
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            section { padding: 3rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+    <div>
+        <h1>Jai <span>Mehrotra</span></h1>
+        <p class="tagline">Data Engineer building high-performance ETL pipelines, scalable data architectures, and AI-driven analytics on Azure &amp; AWS.</p>
+        <div class="hero-links">
+            <a href="mailto:jai.mehrotra26@gmail.com" class="filled">Contact Me</a>
+            <a href="https://www.linkedin.com/in/jai-mehrotra-6b20461ba/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/Jai-Mehrotra" target="_blank">GitHub</a>
+        </div>
+    </div>
+</div>
+
+<!-- Skills -->
+<section id="skills">
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="skills-grid">
+        <div class="skill-card">
+            <h3>Languages & Query</h3>
+            <div class="skill-tags">
+                <span>Python</span><span>PySpark</span><span>SparkSQL</span><span>SQL</span>
+                <span>HiveQL</span><span>Scala</span><span>C++</span><span>DAX</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <h3>Data Platforms & ETL</h3>
+            <div class="skill-tags">
+                <span>Azure Data Factory</span><span>Databricks</span><span>Azure Synapse</span>
+                <span>Microsoft Fabric</span><span>SSIS</span><span>ADLS</span>
+                <span>Medallion Architecture</span><span>Data Modeling</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <h3>Big Data & Distributed Systems</h3>
+            <div class="skill-tags">
+                <span>Hadoop</span><span>Hive</span><span>Spark</span><span>Amazon EMR</span>
+                <span>MapReduce</span><span>MPP Architectures</span><span>NoSQL</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <h3>AI / ML</h3>
+            <div class="skill-tags">
+                <span>Scikit-learn</span><span>Pandas</span><span>ML Pipelines</span>
+                <span>Anomaly Detection</span><span>LLMs</span><span>Langchain</span>
+                <span>Predictive Analytics</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <h3>Cloud & DevOps</h3>
+            <div class="skill-tags">
+                <span>Azure</span><span>AWS (S3, EC2, Glue, Lambda, EMR)</span>
+                <span>CI/CD</span><span>Azure DevOps</span><span>Linux</span><span>Docker</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <h3>Visualization & BI</h3>
+            <div class="skill-tags">
+                <span>Power BI</span><span>Power BI Embedded</span><span>REST API</span>
+                <span>Star & Snowflake Schema</span><span>Row-Level Security</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Experience -->
+<section id="experience">
+    <h2 class="section-title">Experience</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <h3>Data Engineer — MAQ Software</h3>
+            <div class="meta">August 2024 – Present · Noida, India</div>
+            <ul>
+                <li>Designed logical data models and optimized high-performance ETL pipelines in Azure Databricks using PySpark and SparkSQL, reducing data processing time by 30%.</li>
+                <li>Owned end-to-end data quality monitoring with automated validation frameworks and self-service dataset access for BI teams.</li>
+                <li>Architected scalable data workflows using ADF, Synapse, and Medallion architecture, improving pipeline efficiency by 25%.</li>
+                <li>Built Power BI dashboards and embedded reporting via REST API and Python for real-time executive and financial reporting.</li>
+                <li>Participated in code reviews, design discussions, and sprint planning; mentored junior engineers on distributed systems patterns.</li>
+            </ul>
+        </div>
+        <div class="timeline-item">
+            <h3>Associate Data Engineer — MAQ Software</h3>
+            <div class="meta">January 2024 – July 2024 · Noida, India</div>
+            <ul>
+                <li>Created a model-driven Power App integrated with Dataverse for cross-team Q&A workflows, boosting efficiency by 25%.</li>
+                <li>Engineered custom UI components using JavaScript, Xrm, and WebAPI for model-driven app visuals.</li>
+                <li>Integrated Power Automate with Azure Functions for real-time data validation; built BVT frameworks for SCD historical validation.</li>
+            </ul>
+        </div>
+        <div class="timeline-item">
+            <h3>Software Engineer Intern — Talent Serve</h3>
+            <div class="meta">June 2023 – July 2023 · Mumbai, India</div>
+            <ul>
+                <li>Built a secure web platform using Django with REST APIs; designed a normalized SQL Server schema with row-level security.</li>
+                <li>Integrated data pipelines using ADF and SQL stored procedures for secure reporting and sentiment trend analysis.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+        <div class="project-card">
+            <h3>Inventory Anomaly Detection <span class="ai-badge">AI/ML</span></h3>
+            <div class="tech">Azure Data Factory · Azure SQL · T-SQL · Power BI</div>
+            <p>Automated anomaly detection for retail stock irregularities using window functions and CTEs. Visualized real-time alerts, reducing inventory errors by 35% and saving 100+ hours/month.</p>
+        </div>
+        <div class="project-card">
+            <h3>Unified Marketing Intelligence <span class="ai-badge">AI/ML</span></h3>
+            <div class="tech">ADF · Databricks (PySpark) · Synapse · Power BI</div>
+            <p>Cloud-based pipeline integrating Google Ads, Facebook, and CRM data into a star schema. ML-powered ROI optimization improved marketing ROI by 18%.</p>
+        </div>
+        <div class="project-card">
+            <h3>Fabric Tenant Admin Tool</h3>
+            <div class="tech">Power BI REST API · Fabric v2.0 API · ADF · Databricks</div>
+            <p>Large-scale data extraction pipeline for tenant analytics. Reduced manual data handling by 40+ hours/month with real-time Power BI dashboards.</p>
+        </div>
+        <div class="project-card">
+            <h3>Live Earthquake Visualization</h3>
+            <div class="tech">Java · Python · MongoDB · Unfolding Maps</div>
+            <p>Real-time seismic visualization platform processing 500K+ data points from the U.S. Seismic Data Center, improving event detection accuracy by 15%.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Certifications -->
+<section id="certifications">
+    <h2 class="section-title">Certifications</h2>
+    <div class="cert-list">
+        <div class="cert-item">
+            <div class="icon">🏅</div>
+            <div>
+                <a href="https://learn.microsoft.com/api/credentials/share/en-us/JaiMehrotra-8313/82C5368FBFEE8260?sharingId=665F4384EF49C938" target="_blank">Microsoft Certified: Fabric Analytics Engineer Associate</a><br>
+                <span>DP-600 · Microsoft</span>
+            </div>
+        </div>
+        <div class="cert-item">
+            <div class="icon">🏅</div>
+            <div>
+                <a href="https://learn.microsoft.com/en-us/users/jaimehrotramaqsoftware-7702/credentials/8a486f50309ded69" target="_blank">Microsoft Certified: Fabric Data Engineer Associate</a><br>
+                <span>Microsoft</span>
+            </div>
+        </div>
+        <div class="cert-item">
+            <div class="icon">❄️</div>
+            <div>
+                <a href="https://www.credential.net/profile/jaimehrotra138672/wallet" target="_blank">SnowPro Core Certification</a><br>
+                <span>Snowflake</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Education -->
+<section id="education">
+    <h2 class="section-title">Education</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <h3>B.E. Computer Engineering — Thapar Institute of Engineering and Technology</h3>
+            <div class="meta">2020 – 2024 · Patiala, Punjab · GPA: 8.22/10.0</div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    &copy; 2026 Jai Mehrotra · Built with purpose
+</footer>
+
+</body>
+</html>
